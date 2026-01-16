@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Blog Primakara - Website blog interaktif mahasiswa Primakara University dengan fitur pagination, share, dan animasi modern.">
+    <meta name="author" content="Heisyan Aleandro">
+    <meta name="keywords" content="blog, primakara, mahasiswa, web development, javascript">
+    <title>Blog Primakara | Primakara Developers</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <span class="logo-icon"><img src="images/logo.png" width="200px" alt=""></span>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link active">Beranda</a></li>
+                    <li><a href="#blogs" class="nav-link">Blog</a></li>
+                    <li><a href="#about" class="nav-link">Tentang Saya</a></li>
+                </ul>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        Selamat Datang di
+                        <span class="highlight">Blog Primakara</span>
+                    </h1>
+                    <p class="hero-description">
+                        Temukan artikel menarik seputar teknologi, gaya hidup,
+                        dan pengalaman seru sebagai mahasiswa Primakara University.
+                    </p>
+                    <button id="randomBlogBtn" class="btn btn-primary" type="button">
+                        🎲 Surprise Me!
+                    </button>
+                </div>
+            </div>
+        </section>
+    
+        <section id="randomBlogSection" class="random-blog-section hidden">
+            <div class="container">
+                <h2 class="section-title">🎯 Blog Pilihan Acak</h2>
+                <div id="randomBlogContainer" class="random-blog-container"></div>
+                <button id="closeRandomBlog" class="btn btn-secondary">✕ Tutup</button>
+            </div>
+        </section>
+    
+        <!-- Expanded Blog Article Section -->
+        <section id="expandedBlogSection" class="expanded-blog-section hidden">
+            <div class="container">
+                <button id="backToHome" class="btn btn-back">← Kembali ke Beranda</button>
+                <article id="expandedBlogContent" class="expanded-blog-article">
+                </article>
+            </div>
+        </section>
+    
+        <section id="blogs" class="blogs-section">
+            <div class="container">
+                <h2 class="section-title">📚 Artikel Terbaru</h2>
+                <p class="section-description">
+                    Kumpulan artikel yang saya tulis untuk berbagi pengetahuan dan pengalaman.
+                </p>
+    
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <input type="text" id="searchInput" class="search-input" placeholder="🔍 Cari blog berdasarkan judul, deskripsi, atau kategori...">
+                </div>
+    
+                <!-- Category Filter -->
+                <div class="category-filter">
+                    <button class="category-filter-btn active" data-category="all">Semua</button>
+                    <button class="category-filter-btn" data-category="Teknologi">💻 Teknologi</button>
+                    <button class="category-filter-btn" data-category="Travel">✈️ Travel</button>
+                    <button class="category-filter-btn" data-category="Kuliner">🍜 Kuliner</button>
+                    <button class="category-filter-btn" data-category="Lifestyle">🎨 Lifestyle</button>
+                    <button class="category-filter-btn" data-category="Kesehatan">💚 Kesehatan</button>
+                </div>
+    
+                <!-- No Results Message -->
+                <div id="noResults" class="no-results hidden">
+                    <div class="no-results-icon">🔍</div>
+                    <h3 class="no-results-title">Tidak Ada Hasil Ditemukan</h3>
+                    <p class="no-results-text">Maaf, tidak ada blog yang cocok dengan pencarian Anda. Coba kata kunci lain atau pilih kategori yang berbeda.</p>
+                </div>
+    
+                <div id="blogGrid" class="blog-grid">
+                    <article class="blog-card animate-on-scroll" data-blog-id="1">
+                        <div class="card-image">
+                            <img src="images/blog-1.jpg" alt="Memulai Perjalanan Belajar Web Development" loading="lazy">
+                            <span class="category-badge category-tech">Teknologi</span>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Memulai Perjalanan Belajar Web Development</h3>
+                            <p class="card-description">Berbagi pengalaman pertama saya dalam mempelajari HTML, CSS, dan
+                                JavaScript. Dari nol hingga bisa membuat website sederhana, ini adalah perjalanan yang
+                                menyenangkan dan penuh tantangan.</p>
+                            <div class="card-meta">
+                                <span class="card-author"><span>👤</span> Heisyan Aleandro</span>
+                                <span class="card-date">📅 15 Januari 2024</span>
+                            </div>
+                            <div class="share-buttons">
+                                <button class="share-btn share-whatsapp" data-id="1" data-platform="whatsapp"
+                                    title="Share ke WhatsApp">
+                                    <span>📱</span> WhatsApp
+                                </button>
+                                <button class="share-btn share-twitter" data-id="1" data-platform="twitter"
+                                    title="Share ke Twitter">
+                                    <span>🐦</span> Twitter
+                                </button>
+                                <button class="share-btn share-copy" data-id="1" data-platform="copy" title="Copy Link">
+                                    <span>🔗</span> Copy
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+    
+                    <article class="blog-card animate-on-scroll" data-blog-id="2">
+                        <div class="card-image">
+                            <img src="images/blog-2.jpg" alt="Liburan Seru ke Pantai Bali yang Indah" loading="lazy">
+                            <span class="category-badge category-travel">Travel</span>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Liburan Seru ke Pantai Bali yang Indah</h3>
+                            <p class="card-description">Menikmati keindahan sunset di pantai Bali bersama teman-teman
+                                kampus. Pengalaman yang tidak akan terlupakan dan sangat recommended untuk refreshing dari
+                                rutinitas kuliah.</p>
+                            <div class="card-meta">
+                                <span class="card-author"><span>👤</span> Heisyan Aleandro</span>
+                                <span class="card-date">📅 20 Januari 2024</span>
+                            </div>
+                            <div class="share-buttons">
+                                <button class="share-btn share-whatsapp" data-id="2" data-platform="whatsapp"
+                                    title="Share ke WhatsApp">
+                                    <span>📱</span> WhatsApp
+                                </button>
+                                <button class="share-btn share-twitter" data-id="2" data-platform="twitter"
+                                    title="Share ke Twitter">
+                                    <span>🐦</span> Twitter
+                                </button>
+                                <button class="share-btn share-copy" data-id="2" data-platform="copy" title="Copy Link">
+                                    <span>🔗</span> Copy
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+    
+                    <article class="blog-card animate-on-scroll" data-blog-id="3">
+                        <div class="card-image">
+                            <img src="images/blog-3.jpg" alt="Review Kuliner: Nasi Goreng Legendaris" loading="lazy">
+                            <span class="category-badge category-food">Kuliner</span>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Review Kuliner: Nasi Goreng Legendaris</h3>
+                            <p class="card-description">Mencoba nasi goreng legendaris yang viral di media sosial. Apakah
+                                rasanya sesuai dengan hype-nya? Baca review lengkapnya di sini beserta tips lokasi dan
+                                harga.</p>
+                            <div class="card-meta">
+                                <span class="card-author"><span>👤</span> Heisyan Aleandro</span>
+                                <span class="card-date">📅 25 Januari 2024</span>
+                            </div>
+                            <div class="share-buttons">
+                                <button class="share-btn share-whatsapp" data-id="3" data-platform="whatsapp"
+                                    title="Share ke WhatsApp">
+                                    <span>📱</span> WhatsApp
+                                </button>
+                                <button class="share-btn share-twitter" data-id="3" data-platform="twitter"
+                                    title="Share ke Twitter">
+                                    <span>🐦</span> Twitter
+                                </button>
+                                <button class="share-btn share-copy" data-id="3" data-platform="copy" title="Copy Link">
+                                    <span>🔗</span> Copy
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+    
+                    <article class="blog-card animate-on-scroll" data-blog-id="4">
+                        <div class="card-image">
+                            <img src="images/blog-4.jpg" alt="Kehidupan Mahasiswa di Primakara University" loading="lazy">
+                            <span class="category-badge category-lifestyle">Lifestyle</span>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Kehidupan Mahasiswa di Primakara University</h3>
+                            <p class="card-description">Cerita seru tentang kehidupan sehari-hari sebagai mahasiswa
+                                Primakara. Dari tugas yang menumpuk hingga momen kebersamaan bersama teman-teman yang tidak
+                                tergantikan.</p>
+                            <div class="card-meta">
+                                <span class="card-author"><span>👤</span> Heisyan Aleandro</span>
+                                <span class="card-date">📅 1 Februari 2024</span>
+                            </div>
+                            <div class="share-buttons">
+                                <button class="share-btn share-whatsapp" data-id="4" data-platform="whatsapp"
+                                    title="Share ke WhatsApp">
+                                    <span>📱</span> WhatsApp
+                                </button>
+                                <button class="share-btn share-twitter" data-id="4" data-platform="twitter"
+                                    title="Share ke Twitter">
+                                    <span>🐦</span> Twitter
+                                </button>
+                                <button class="share-btn share-copy" data-id="4" data-platform="copy" title="Copy Link">
+                                    <span>🔗</span> Copy
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+    
+                    <article class="blog-card animate-on-scroll" data-blog-id="5">
+                        <div class="card-image">
+                            <img src="images/blog-5.jpg" alt="Tips Menjaga Kesehatan Mental Mahasiswa" loading="lazy">
+                            <span class="category-badge category-health">Kesehatan</span>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Tips Menjaga Kesehatan Mental Mahasiswa</h3>
+                            <p class="card-description">Kesehatan mental sangat penting terutama bagi mahasiswa. Berikut
+                                adalah beberapa tips yang saya lakukan untuk menjaga keseimbangan antara kuliah dan
+                                kehidupan pribadi.</p>
+                            <div class="card-meta">
+                                <span class="card-author"><span>👤</span> Heisyan Aleandro</span>
+                                <span class="card-date">📅 5 Februari 2024</span>
+                            </div>
+                            <div class="share-buttons">
+                                <button class="share-btn share-whatsapp" data-id="5" data-platform="whatsapp"
+                                    title="Share ke WhatsApp">
+                                    <span>📱</span> WhatsApp
+                                </button>
+                                <button class="share-btn share-twitter" data-id="5" data-platform="twitter"
+                                    title="Share ke Twitter">
+                                    <span>🐦</span> Twitter
+                                </button>
+                                <button class="share-btn share-copy" data-id="5" data-platform="copy" title="Copy Link">
+                                    <span>🔗</span> Copy
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+    
+                    <article class="blog-card animate-on-scroll" data-blog-id="6">
+                        <div class="card-image">
+                            <img src="images/blog-8.png" alt="Panduan Lengkap Belajar Git dan GitHub" loading="lazy">
+                            <span class="category-badge category-tech">Teknologi</span>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Panduan Lengkap Belajar Git dan GitHub</h3>
+                            <p class="card-description">Git dan GitHub adalah tools wajib untuk developer. Artikel ini
+                                membahas langkah-langkah dasar untuk mulai menggunakan version control dalam proyek kamu.
+                            </p>
+                            <div class="card-meta">
+                                <span class="card-author"><span>👤</span> Heisyan Aleandro</span>
+                                <span class="card-date">📅 10 Februari 2024</span>
+                            </div>
+                            <div class="share-buttons">
+                                <button class="share-btn share-whatsapp" data-id="6" data-platform="whatsapp"
+                                    title="Share ke WhatsApp">
+                                    <span>📱</span> WhatsApp
+                                </button>
+                                <button class="share-btn share-twitter" data-id="6" data-platform="twitter"
+                                    title="Share ke Twitter">
+                                    <span>🐦</span> Twitter
+                                </button>
+                                <button class="share-btn share-copy" data-id="6" data-platform="copy" title="Copy Link">
+                                    <span>🔗</span> Copy
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+    
+                    <article class="blog-card animate-on-scroll" data-blog-id="7">
+                        <div class="card-image">
+                            <img src="images/blog-7.jpg" alt="Cafe Hits untuk Ngerjain Tugas di Bali" loading="lazy">
+                            <span class="category-badge category-lifestyle">Lifestyle</span>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Cafe Hits untuk Ngerjain Tugas di Bali</h3>
+                            <p class="card-description">Rekomendasi cafe dengan WiFi kencang dan suasana nyaman untuk
+                                mengerjakan tugas kuliah. Lengkap dengan harga dan fasilitas yang tersedia.</p>
+                            <div class="card-meta">
+                                <span class="card-author"><span>👤</span> Heisyan Aleandro</span>
+                                <span class="card-date">📅 15 Februari 2024</span>
+                            </div>
+                            <div class="share-buttons">
+                                <button class="share-btn share-whatsapp" data-id="7" data-platform="whatsapp"
+                                    title="Share ke WhatsApp">
+                                    <span>📱</span> WhatsApp
+                                </button>
+                                <button class="share-btn share-twitter" data-id="7" data-platform="twitter"
+                                    title="Share ke Twitter">
+                                    <span>🐦</span> Twitter
+                                </button>
+                                <button class="share-btn share-copy" data-id="7" data-platform="copy" title="Copy Link">
+                                    <span>🔗</span> Copy
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+    
+                    <article class="blog-card animate-on-scroll" data-blog-id="8">
+                        <div class="card-image">
+                            <img src="images/blog-6.jpg" alt="Review Gadget: Laptop Terbaik untuk Mahasiswa" loading="lazy">
+                            <span class="category-badge category-tech">Teknologi</span>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Review Gadget: Laptop Terbaik untuk Mahasiswa</h3>
+                            <p class="card-description">Memilih laptop yang tepat untuk kebutuhan kuliah dan programming.
+                                Bandingkan spesifikasi dan harga dari berbagai brand populer.</p>
+                            <div class="card-meta">
+                                <span class="card-author"><span>👤</span> Heisyan Aleandro</span>
+                                <span class="card-date">📅 20 Februari 2024</span>
+                            </div>
+                            <div class="share-buttons">
+                                <button class="share-btn share-whatsapp" data-id="8" data-platform="whatsapp"
+                                    title="Share ke WhatsApp">
+                                    <span>📱</span> WhatsApp
+                                </button>
+                                <button class="share-btn share-twitter" data-id="8" data-platform="twitter"
+                                    title="Share ke Twitter">
+                                    <span>🐦</span> Twitter
+                                </button>
+                                <button class="share-btn share-copy" data-id="8" data-platform="copy" title="Copy Link">
+                                    <span>🔗</span> Copy
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+    
+                <div id="paginationContainer" class="pagination"></div>
+            </div>
+        </section>
+    
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2 class="section-title">👋 Tentang Author</h2>
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="images/profile.jpg" alt="Foto Profil Mahasiswa Primakara" class="profile-photo">
+                    </div>
+                    <div class="about-info">
+                        <h3 class="about-name">Heisyan Aleandro</h3>
+                        <p class="about-campus">
+                            <span class="icon">🎓</span>
+                            Primakara University
+                        </p>
+                        <p class="about-program">
+                            <span class="icon">💻</span>
+                            Program Studi: Informatika
+                        </p>
+                        <p class="about-bio">
+                            Halo! Saya adalah mahasiswa Primakara University yang sedang belajar
+                            pengembangan web. Blog ini adalah proyek akhir saya untuk kelas
+                            Beginner HTML, CSS, dan JavaScript di Primakara Developers.
+                        </p>
+                        <p class="about-bio">
+                            Saya tertarik dengan web development, desain UI/UX, dan teknologi modern.
+                            Melalui blog ini, saya ingin berbagi pengetahuan dan pengalaman saya
+                            selama belajar programming dan pengalaman lainnya.
+                        </p>
+                        <div class="social-links">
+                            <a href="https://github.com/Heisyan" class="social-link" title="GitHub">GitHub</a>
+                            <a href="https://www.linkedin.com/in/heisyanaleandro" class="social-link"
+                                title="LinkedIn">LinkedIn</a>
+                            <a href="https://instagram.com/heisyan_aleandro" class="social-link"
+                                title="Instagram">Instagram</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">
+                &copy; 2026 Blog Primakara | Dibuat untuk Final Project
+            </p>
+            <p class="footer-credit">
+                Primakara Developers - Beginner Class HTML, CSS & JavaScript
+            </p>
+        </div>
+    </footer>
+    <div id="toast" class="toast">Link berhasil disalin!</div>
+    <script src="BlogData.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
